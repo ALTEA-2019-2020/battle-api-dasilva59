@@ -38,6 +38,16 @@ public class Stats {
     private Integer attack;
     private Integer hp;
 
+    public Integer getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(Integer maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    private Integer maxHp;
+
     public void init(int level) {
         double attack=5+(this.getAttack()*((double)level/50));
         double defense=5+(this.getDefense()*((double)level/50));
@@ -47,5 +57,6 @@ public class Stats {
         this.setDefense((int)defense);
         this.setSpeed((int)speed);
         this.setHp((int)hp);
+        this.setMaxHp((int)hp);
     }
 }

@@ -33,15 +33,7 @@ public class Battle {
     private Trainer trainer;
     private Trainer oponent;
 
-    public Boolean getNewBattle() {
-        return newBattle;
-    }
 
-    public void setNewBattle(Boolean newBattle) {
-        this.newBattle = newBattle;
-    }
-
-    private Boolean newBattle =true;
 
 
 }

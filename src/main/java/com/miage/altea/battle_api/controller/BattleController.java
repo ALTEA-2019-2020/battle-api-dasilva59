@@ -2,17 +2,16 @@ package com.miage.altea.battle_api.controller;
 
 
 import com.miage.altea.battle_api.bo.Battle;
-import com.miage.altea.battle_api.bo.BattleBegin;
 import com.miage.altea.battle_api.service.BattleService;
 import com.miage.altea.battle_api.service.ExceptionNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/battles")
 public class BattleController {
@@ -20,26 +19,29 @@ public class BattleController {
     @Autowired
     BattleService battleService;
 
+    @CrossOrigin
     @PostMapping
-    public UUID setNewBattle(@RequestBody BattleBegin battle) {
-        return battleService.getUuid(battle);
+    public UUID setNewBattle(@RequestParam String trainer,@RequestParam  String opponent) throws ExceptionNotFound {
+        return battleService.getUuid(trainer,opponent);
     }
 
-
+    @CrossOrigin
     @GetMapping
     public List<Battle> getBattles(){
         return new ArrayList<>(battleService.getBattles().values());
 
     }
+    @CrossOrigin
     @GetMapping("/{uuid}")
     public Battle getBattle(@PathVariable UUID uuid){
         return battleService.getBattle(uuid);
 
     }
 
+    @CrossOrigin
     @PostMapping("/{uuid}/{trainerName}/attack")
-    public Battle battleAttack(@PathVariable UUID uuid, @PathVariable String trainerName) throws ExceptionNotFound {
-        return battleService.attackBattle(uuid, trainerName);
+    public Battle battleAttack(@PathVariable UUID uuid,@PathVariable String trainerName) throws ExceptionNotFound {
+        return battleService.attackBattle(uuid,trainerName);
     }
 
 

@@ -73,6 +73,16 @@ public class PokemonType {
     private int weight;
     private List<String> types;
 
+    public Sprites getSprites() {
+        return sprites;
+    }
+
+    public void setSprites(Sprites sprites) {
+        this.sprites = sprites;
+    }
+
+    private Sprites sprites;
+
     public Boolean getAlive() {
         return alive;
     }
